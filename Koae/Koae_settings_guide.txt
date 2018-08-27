@@ -1,0 +1,13 @@
+townList
+directions
+riverTypes
+lakeTypes
+landformTypes 
+specialTypes
+treeTypes
+groveTypes
+rockTypes
+oreTypes
+peopleNames
+jobTypes
+events
