@@ -1,0 +1,17 @@
+town suffixes: ton, town, city,
+directions: north, north-north-east
+running water Types: river, stream, brook
+standing water Types: pond, lake, sea, ocean
+landform Types: forest, grove, 
+special Types: flooded cavern, ancient ruins
+tree Types: oak, mangrove, juniper
+grove Types: mushrooms, blueberries, barley, wild rice
+rock Types: gneiss, slate, shale, obsidian
+ore Types: iron, bauxite, selenite, sapphire, yellow diamond
+people Names: Alice, Bob, Charlie, Donna, Eve
+job Types: Ackerman, Cooper, Gusmith, Beggar, Bard
+events: (CURRENTLY NOT USED, just put a dummy entry. This will eventually be for a history generator)
+Mayor Title: None, Protector, High Priest
+Parliament Term: Council, Circle, High Members
+Mayor Identity: a landowner, a commoner, a business man.
+electors: commoners, a hereditary line, guildsmen, merchants, landlords

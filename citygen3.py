@@ -61,13 +61,10 @@ headofStateIdentity = processline(15)
 electors = processline(16)
 
 
-def personmaker():
-	person = random.choice(peopleNames)
-	return person
 
-def personwithjobmaker():
-	person = random.choice(peopleNames) + ' the' + random.choice(jobTypes)
-	return person
+#def personwithjobmaker():
+#	person = random.choice(peopleNames) + ' the' + random.choice(jobTypes)
+#	return person
 
 regionListInitial =[]
 for i in range(0,numberofRegions):
@@ -80,6 +77,8 @@ regionListFinal = regionListInitial
 
 regionsString = ', '.join(regionListInitial)
 print(regionsString, file=outputFile)
+
+
 
 for i in range(0,numberofCities):
 
@@ -106,9 +105,13 @@ for i in range(0,numberofCities):
 
 
 
+
 	##------------REGION------------##
 	cityRegion = random.choice(regionListFinal)
 	regionListFinal.append(cityRegion)
+
+
+
 	
 	##------------POPULATION------------##
 	#This is where the population of the city is determined. Most of the time the city populatioln is going to be small.
@@ -151,6 +154,9 @@ for i in range(0,numberofCities):
 		global directions
 		return ' to the {}.'.format(random.choice(directions))
 	
+
+
+
 	##--WATER--##
 	#First we decide the water source near the city. 0=lake, 1=river, 2=none
 	water = random.randint(1,4)
@@ -168,6 +174,9 @@ for i in range(0,numberofCities):
 			waterStringList.append(waterSource)
 		waterString = ' '.join(waterStringList)
 	
+
+
+
 	##--LAND--##
 	#Now we decide the land features near the city
 	#this decides how many the city gets (between 2 and 6)
@@ -196,13 +205,47 @@ for i in range(0,numberofCities):
 		featureStringList.append(feature)
 	featureString = ' '.join(featureStringList)
 	
+
+
+
 	##------------NOTABLE PEOPLE------------##
-	
+	#First it generates some last names/families for people to be a part of
+	lastNames = ['newLastName']
+	lastNameStringList = ['Notable Families: ', '\n']
+
+	for i in range(int(cityPop/10),int(cityPop/5)):
+		lastNameRandom = random.choice(lastNames)
+		lastNameType = random.randint(1,2)
+		if lastNameRandom=='newLastName' and lastNameType==1:
+			protoLastName = random.choice(nameList)
+			lastNames.append(protoLastName)
+			lastNameStringList.append(protoLastName.capitalize() + '\n')
+		elif lastNameRandom=='newLastName' and lastNameType==2:
+			protoLastName = random.choice(jobTypes)
+			lastNames.append(protoLastName)
+			lastNameStringList.append(protoLastName.capitalize() + '\n')
+		else:
+			lastNames.append(lastNameRandom)
+	lastNames.remove('newLastName')
+	lastNames.append(random.choice(nameList))
+	lastNameString = ''.join(lastNameStringList)
+
+	def personmaker():
+		person = random.choice(peopleNames) + ' ' + random.choice(lastNames).capitalize()
+		return person
+
+	#Now it generates some people and gives them first and last names
 	peopleList = ['Notable people:', '\n']
 	for i in range(0,random.randint(3,12)):
-		person = random.choice(peopleNames) + ' the ' + random.choice(jobTypes) + '\n'
+		person = personmaker() + ' the ' + random.choice(jobTypes) + '\n'
 		peopleList.append(person)
+
 	peopleString = ' '.join(peopleList)
+
+
+
+
+
 
 	##------------GOVERNMENT------------##
 	governmentStringList = ['Local Government:', '\n']
@@ -270,6 +313,9 @@ for i in range(0,numberofCities):
 	
 		'------------------', '\n',
 		peopleString,
+
+		'------------------', '\n',
+		lastNameString,
 	
 		'------------------', '\n',
 		governmentString,
